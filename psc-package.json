@@ -1,0 +1,13 @@
+{
+    "name": "purescript-pong",
+    "set": "psc-0.11.6",
+    "source": "https://github.com/purescript/package-sets.git",
+    "depends": [
+        "sets",
+        "refs",
+        "canvas",
+        "unsafe-coerce",
+        "dom",
+        "prelude"
+    ]
+}

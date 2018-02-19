@@ -1,0 +1,25 @@
+{
+  "private": true,
+  "scripts": {
+    "install-deps": "psc-package install",
+    "clean": "rimraf output && rimraf .pulp-cache",
+    "repl": "psc-package sources | xargs purs repl",
+    "bundle": "purs bundle -o output/Main/bundle.js -m Main output/**/{index,foreign}.js",
+    "buildfast": "psc-package sources | xargs purs compile 'src/**/*.purs'",
+    "build": "npm run buildfast && rollup -c",
+    "buildbrowser": "npm run build && rollup -c rollup.config.browser.js",
+    "test": "psc-package sources | xargs purs compile 'src/**/*.purs' 'test/**/*.purs' && NODE_PATH=output:$NODE_PATH node -e \"require('Test.Main').main()\""
+  },
+  "devDependencies": {
+    "eslint": "^3.17.1",
+    "pulp": "^11.0.x",
+    "purescript-psa": "^0.5.x",
+    "rimraf": "^2.6.1"
+  },
+  "dependencies": {
+    "rollup": "^0.56.1",
+    "rollup-plugin-commonjs": "^8.3.0",
+    "rollup-plugin-node-resolve": "^3.0.3",
+    "rollup-plugin-purs": "^1.0.38"
+  }
+}
